@@ -626,3 +626,253 @@ body {
 .week-reflections-text {
     flex-grow: 1; /* Allows the text block to occupy all remaining space next to the image */
 }
+/* ADD THESE NEW STYLES TO YOUR EXISTING style.css FILE */
+/* Place them after your existing journey section styles */
+
+/* ================================================ */
+/* GRIMOIRE ACCORDION STYLES - NEW INTERACTIVE JOURNEY */
+/* ================================================ */
+
+/* Mystical Grimoire Phase Containers */
+.grimoire-phase {
+    background: rgba(157, 78, 221, 0.1);
+    border: 2px solid #9d4edd;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(157, 78, 221, 0.2);
+}
+
+.grimoire-phase:hover {
+    box-shadow: 0 8px 30px rgba(199, 125, 255, 0.4);
+    border-color: #c77dff;
+}
+
+/* Phase Header (Main clickable accordion buttons) */
+.phase-header {
+    padding: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(123, 44, 191, 0.2), rgba(157, 78, 221, 0.2));
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.phase-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(199, 125, 255, 0.15), transparent);
+    transform: scale(0);
+    transition: transform 0.6s ease;
+}
+
+.phase-header:hover::before {
+    transform: scale(1);
+}
+
+.phase-header:hover {
+    background: linear-gradient(135deg, rgba(123, 44, 191, 0.3), rgba(157, 78, 221, 0.3));
+}
+
+.phase-title {
+    font-size: 1.8rem;
+    color: #c77dff;
+    text-shadow: 0 0 10px rgba(199, 125, 255, 0.5);
+    z-index: 1;
+    position: relative;
+}
+
+.phase-icon {
+    font-size: 2rem;
+    transition: transform 0.4s ease;
+    z-index: 1;
+    position: relative;
+}
+
+/* Rotate icon when phase is active/open */
+.grimoire-phase.active .phase-icon {
+    transform: rotate(180deg);
+}
+
+/* Phase Content (Hidden by default, expands when active) */
+.phase-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease, padding 0.6s ease;
+    padding: 0 2rem;
+}
+
+.grimoire-phase.active .phase-content {
+    max-height: 10000px; /* Large enough to fit all content */
+    padding: 2rem;
+}
+
+/* Stevie Quotes */
+.stevie-quote {
+    font-style: italic;
+    color: #e0aaff;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(224, 170, 255, 0.3);
+}
+
+/* Week Summary Text */
+.week-summary {
+    font-style: italic;
+    color: #b19cd9;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* ================================================ */
+/* WEEK-LEVEL ACCORDION (Nested inside phases) */
+/* ================================================ */
+
+.weeks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.week-item {
+    background: rgba(123, 44, 191, 0.15);
+    border: 1px solid #7b2cbf;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.week-item:hover {
+    border-color: #9d4edd;
+    box-shadow: 0 5px 20px rgba(157, 78, 221, 0.3);
+}
+
+.week-header {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(157, 78, 221, 0.1);
+    transition: all 0.3s ease;
+}
+
+.week-header:hover {
+    background: rgba(157, 78, 221, 0.2);
+}
+
+.week-title {
+    font-size: 1.3rem;
+    color: #e0aaff;
+}
+
+.week-toggle {
+    font-size: 1.5rem;
+    color: #c77dff;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate toggle arrow when week is open */
+.week-item.active .week-toggle {
+    transform: rotate(180deg);
+}
+
+/* Week Details (Expandable content) */
+.week-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    padding: 0 1.5rem;
+}
+
+.week-item.active .week-details {
+    max-height: 3000px;
+    padding: 1.5rem;
+}
+
+/* ================================================ */
+/* SPARKLE ANIMATION */
+/* ================================================ */
+
+.sparkle-effect {
+    animation: sparkle 1s forwards;
+    font-size: 1.5rem;
+}
+
+@keyframes sparkle {
+    0% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+    100% { 
+        opacity: 0; 
+        transform: translate(-50%, -150%) scale(0.5); 
+    }
+}
+
+/* ================================================ */
+/* TIMELINE FOOTER */
+/* ================================================ */
+
+.timeline-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(183, 148, 246, 0.1);
+    border-radius: 10px;
+    border: 2px solid #9d4edd;
+}
+
+/* ================================================ */
+/* RESPONSIVE ADJUSTMENTS FOR MOBILE */
+/* ================================================ */
+
+@media (max-width: 768px) {
+    .phase-title {
+        font-size: 1.3rem;
+    }
+
+    .phase-header {
+        padding: 1.5rem;
+    }
+
+    .week-title {
+        font-size: 1.1rem;
+    }
+
+    .week-blog {
+        flex-direction: column;
+    }
+
+    .week-image {
+        width: 100%;
+    }
+}
+
+/* ================================================ */
+/* GLOWING CURSOR EFFECT (Optional Enhancement) */
+/* ================================================ */
+
+.phase-header:hover, 
+.week-header:hover {
+    cursor: pointer;
+}
+
+/* Add glow effect to hover states */
+.phase-header:hover .phase-title {
+    text-shadow: 0 0 15px rgba(199, 125, 255, 0.7);
+}
+
+.week-header:hover .week-title {
+    text-shadow: 0 0 10px rgba(224, 170, 255, 0.5);
+}
